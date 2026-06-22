@@ -1,0 +1,79 @@
+/* Custom CSS for Minimalist Portfolio Component */
+
+/* 14-column layout matrix for kinetic cell grid */
+.grid-cols-14 {
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+}
+
+/* Elegant fade-in animations for dynamic templates */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Beautiful custom ranges styling matching minimalist aesthetic */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* Testimonial blockquote hover transition accents */
+.blockquote-interactive {
+  transition: border-color 0.4s ease, padding-left 0.4s ease;
+}
+
+.blockquote-interactive:hover {
+  border-color: #ffffff;
+  padding-left: 2.5rem;
+}
+
+/* Background gradient mockups blur */
+.bg-zinc-855 {
+  background-color: #1e1e21;
+}
+
+/* Custom fade animation */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawer-content {
+  animation: slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

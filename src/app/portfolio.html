@@ -1,0 +1,670 @@
+<div class="min-h-screen bg-matte-black text-[#f5f5f7] selection:bg-white selection:text-black font-sans overflow-x-hidden antialiased">
+  
+  <!-- Premium Glass Fixed Navigation Header -->
+  <header class="fixed top-0 left-0 w-full z-40 border-b border-white/5 bg-matte-black/75 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
+      
+      <!-- Logo / Name Mark -->
+      <button (click)="scrollToSection('home')" class="cursor-pointer flex items-center gap-3 group text-left bg-transparent border-0 p-0">
+        <div class="h-8 w-8 bg-white flex items-center justify-center rounded-sm font-mono text-sm text-black font-bold tracking-tight transition-transform duration-300 group-hover:scale-110">
+          R
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-sm tracking-widest text-white group-hover:text-white/80 transition-colors">ROSE SINGCO</span>
+          <span class="font-mono text-[9px] text-[#888888] tracking-widest tracking-tighter">FRONT-END & BRAND</span>
+        </div>
+      </button>
+
+      <!-- Desktop Navigation Menu Links -->
+      <nav class="hidden md:flex items-center gap-8 font-mono text-xs tracking-widest text-[#888888]">
+        <button (click)="scrollToSection('work')" 
+                class="hover:text-white transition-colors cursor-pointer text-left relative py-1"
+                [class.text-white]="activeSection() === 'work'">
+          WORK
+          <span class="absolute bottom-0 left-0 h-[1.5px] bg-white transition-all duration-300" [class.w-full]="activeSection() === 'work'" [class.w-0]="activeSection() !== 'work'"></span>
+        </button>
+        <button (click)="scrollToSection('capabilities')" 
+                class="hover:text-white transition-colors cursor-pointer text-left relative py-1"
+                [class.text-white]="activeSection() === 'capabilities'">
+          SERVICES
+          <span class="absolute bottom-0 left-0 h-[1.5px] bg-white transition-all duration-300" [class.w-full]="activeSection() === 'capabilities'" [class.w-0]="activeSection() !== 'capabilities'"></span>
+        </button>
+        <button (click)="scrollToSection('testimonials')" 
+                class="hover:text-white transition-colors cursor-pointer text-left relative py-1"
+                [class.text-white]="activeSection() === 'testimonials'">
+          TESTIMONIALS
+          <span class="absolute bottom-0 left-0 h-[1.5px] bg-white transition-all duration-300" [class.w-full]="activeSection() === 'testimonials'" [class.w-0]="activeSection() !== 'testimonials'"></span>
+        </button>
+        <button (click)="scrollToSection('sharing')" 
+                class="hover:text-white transition-colors cursor-pointer text-left relative py-1"
+                [class.text-white]="activeSection() === 'sharing'">
+          PLAYGROUND
+          <span class="absolute bottom-0 left-0 h-[1.5px] bg-white transition-all duration-300" [class.w-full]="activeSection() === 'sharing'" [class.w-0]="activeSection() !== 'sharing'"></span>
+        </button>
+      </nav>
+
+      <!-- CTA Button: Copy / Get in Touch -->
+      <div class="hidden md:flex items-center gap-4">
+        <button (click)="scrollToSection('contact')" 
+                class="px-5 py-2.5 border border-white/10 hover:border-white rounded-full font-mono text-xs text-white tracking-widest bg-white/5 hover:bg-white hover:text-black transition-all duration-300 shadow-sm cursor-pointer">
+          GET IN TOUCH
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button (click)="mobileMenuOpen.set(!mobileMenuOpen())" 
+              class="md:hidden text-white hover:text-neutral-400 p-2 cursor-pointer"
+              aria-label="Toggle navigation menu">
+        <span class="material-icons text-2xl">
+          {{ mobileMenuOpen() ? 'close' : 'menu' }}
+        </span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer Dropdown Menu -->
+    @if (mobileMenuOpen()) {
+      <div class="md:hidden w-full border-b border-white/5 bg-matte-black py-8 px-6 flex flex-col gap-5 animate-fade-in">
+        <button (click)="scrollToSection('work')" class="text-left font-display font-semibold text-lg text-[#888888] hover:text-white focus:text-white">
+          WORK
+        </button>
+        <button (click)="scrollToSection('capabilities')" class="text-left font-display font-semibold text-lg text-[#888888] hover:text-white focus:text-white">
+          SERVICES
+        </button>
+        <button (click)="scrollToSection('testimonials')" class="text-left font-display font-semibold text-lg text-[#888888] hover:text-white focus:text-white">
+          TESTIMONIALS
+        </button>
+        <button (click)="scrollToSection('sharing')" class="text-left font-display font-semibold text-lg text-[#888888] hover:text-white focus:text-white">
+          PLAYGROUND (LAB)
+        </button>
+        <hr class="border-white/10 my-1"/>
+        <button (click)="scrollToSection('contact')" class="text-center py-3 bg-white text-black font-mono text-sm tracking-wider font-semibold rounded-lg hover:bg-white/90">
+          GET IN TOUCH
+        </button>
+      </div>
+    }
+  </header>
+
+  <!-- Spacing and content blocks -->
+  <main class="pt-24 md:pt-32">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24 border-b border-white/5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+        
+        <!-- Left Statement: Big typography paired perfectly -->
+        <div class="lg:col-span-8 flex flex-col justify-center">
+          
+          <!-- Small intro badge -->
+          <div class="reveal-delay opacity-0 inline-flex items-center gap-2 mb-6">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono text-[10px] sm:text-xs tracking-widest text-[#888888]">AVAILABLE FOR CONTRACTS & COLLABORATIONS</span>
+          </div>
+
+          <h1 class="reveal-delay opacity-0 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.05] text-white">
+            CREATIVE INTERFACES.<br/>
+            DIGITAL SYSTEMS.<br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 via-zinc-200 to-white">FRONT-END FOCUS.</span>
+          </h1>
+
+          <p class="reveal-delay opacity-0 mt-8 text-neutral-400 font-sans text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light">
+            I am a senior-tier Front-End Software Developer & Brand Identity Designer with nearly 3 years of digital agency experience. Designing production component architectures, high-contrast layouts, and deploying responsive systems built with semantic standards.
+          </p>
+
+          <!-- Core tags list / bullets -->
+          <div class="reveal-delay opacity-0 mt-8 flex flex-wrap gap-2 max-w-xl">
+            <span class="px-3 py-1 bg-zinc-900 border border-white/5 rounded-full font-mono text-[10px] tracking-widest text-[#888888] uppercase">Interactive Architectures</span>
+            <span class="px-3 py-1 bg-zinc-900 border border-white/5 rounded-full font-mono text-[10px] tracking-widest text-[#888888] uppercase">Accessibility (WAI-ARIA)</span>
+            <span class="px-3 py-1 bg-zinc-900 border border-white/5 rounded-full font-mono text-[10px] tracking-widest text-[#888888] uppercase">Typography Discipline</span>
+            <span class="px-3 py-1 bg-zinc-900 border border-white/5 rounded-full font-mono text-[10px] tracking-widest text-[#888888] uppercase">Tailwind Engineering</span>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Structural Metrics & Cebu Clock -->
+        <div class="lg:col-span-4 lg:pl-12 flex flex-col justify-between h-full border-t lg:border-t-0 lg:border-l border-white/5 pt-12 lg:pt-0 lg:min-h-[400px]">
+          
+          <!-- Dynamic Digital Metric Cards -->
+          <div class="reveal-delay opacity-0 flex flex-col gap-8">
+            <div>
+              <span class="font-mono text-[10px] text-[#888888] tracking-widest uppercase block mb-1">CURRENT BASE</span>
+              <span class="font-display font-semibold text-lg text-white">Cebu, Philippines</span>
+              <p class="text-xs text-[#888888] mt-1">10° 18' 31" N • 123° 54' 1" E</p>
+            </div>
+
+            <div>
+              <span class="font-mono text-[10px] text-[#888888] tracking-widest uppercase block mb-1">LOCAL CO-ORDINATES TIME</span>
+              <span class="font-mono text-xl text-white font-semibold tracking-wider bg-zinc-900/40 px-3 py-1.5 rounded-md border border-white/5 inline-block">
+                {{ currentTime() }}
+              </span>
+            </div>
+
+            <div>
+              <span class="font-mono text-[10px] text-[#888888] tracking-widest uppercase block mb-1">EXPERIENCE SCALE</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-display font-extrabold text-3xl text-white">3+</span>
+                <span class="font-sans text-xs text-neutral-400">Years Active in Agency & Products</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom floating prompt -->
+          <div class="reveal-delay opacity-0 mt-12 lg:mt-auto pt-8 border-t border-white/5">
+            <span class="font-mono text-[9px] text-[#555555] tracking-widest block mb-2">SCROLL DOWN TO INITIATE</span>
+            <div class="flex items-center gap-3">
+              <span class="material-icons text-neutral-500 animate-bounce text-sm">arrow_downward</span>
+              <span class="font-mono text-[10px] text-neutral-400 tracking-widest">SELECTED CASE STUDIES</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SELECTED WORKS GRAPHIC GRID SECTION -->
+    <section id="work" class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-28 border-b border-white/5 scroll-reveal opacity-0">
+      
+      <!-- Section branding header -->
+      <div class="flex items-end justify-between mb-16">
+        <div>
+          <span class="font-mono text-xs tracking-widest text-[#888888] block mb-2">// DIRECT PORTFOLIO INDEX</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">SELECTED WORK</h2>
+        </div>
+        <span class="font-mono text-xs text-[#555555] hidden sm:block">01 — 03 INDEX SCALE</span>
+      </div>
+
+      <!-- Case Studies Containers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        @for (project of projects(); track project.id) {
+          
+          <!-- Individual Card Block -->
+          <div class="group flex flex-col justify-between p-1 bg-zinc-950 border border-white/5 hover:border-white/20 rounded-2xl overflow-hidden transition-all duration-500 shadow-xl relative">
+            
+            <!-- Dynamic abstract visual canvas representing the background -->
+            <div tabindex="0" role="button" (keydown.enter)="openProject(project)"
+                 class="relative h-[260px] sm:h-[320px] md:h-[350px] w-full rounded-xl overflow-hidden bg-gradient-to-br {{ project.gradient }} flex items-center justify-center p-8 transition-transform duration-700 group-hover:scale-[0.99] cursor-pointer"
+                 (click)="openProject(project)">
+              
+              <!-- Top bar indicator inside mockup -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-white/50 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 z-15">
+                <span class="font-bold tracking-wider">{{ project.id | uppercase }} SECURE CLOUD</span>
+                <span class="tracking-widest">// DEPLOYED OK</span>
+              </div>
+
+              <!-- High fidelity vector mockup geometry code element -->
+              <div class="w-full max-w-[340px] aspect-[16/10] bg-black/75 rounded-lg border border-white/10 shadow-2xl overflow-hidden p-3 flex flex-col justify-between transform group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-500 z-10 select-none">
+                <div class="flex items-center gap-1.5 border-b border-white/5 pb-2">
+                  <span class="h-2 w-2 rounded-full bg-red-500/60 block"></span>
+                  <span class="h-2 w-2 rounded-full bg-yellow-500/60 block"></span>
+                  <span class="h-2 w-2 rounded-full bg-green-500/60 block"></span>
+                  <span class="font-mono text-[8px] text-white/40 ml-2">localhost:3000/api/view_stack</span>
+                </div>
+                <div class="py-4 px-2 flex-grow flex flex-col justify-center text-center">
+                  <span class="font-display font-extrabold text-[#00f0ff] uppercase text-[15px] sm:text-[18px] tracking-tight mb-2">{{ project.title }}</span>
+                  <p class="font-mono text-[8px] text-neutral-400 leading-normal max-w-[200px] mx-auto select-none">{{ project.subtitle }}</p>
+                </div>
+                <div class="border-t border-white/5 pt-2 flex items-center justify-between font-mono text-[7px] text-white/40 uppercase">
+                  <span>ROSE SINGCO CODEBASE</span>
+                  <span>VERSION 21.0A</span>
+                </div>
+              </div>
+
+              <!-- Vector lines layout overlay for high engineering fidelity -->
+              <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
+
+              <!-- Action button hover reveal -->
+              <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div class="px-5 py-2.5 bg-white text-black font-mono text-xs tracking-widest font-bold rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  EXPLORE CASE STUDY
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study Meta information below visual mockup -->
+            <div class="p-6 md:p-8">
+              <div class="flex items-center justify-between mb-3 font-mono text-xs text-[#888888]">
+                <span>No. {{ project.number }} / DESIGN CASE</span>
+                <span>YEAR: {{ project.year }}</span>
+              </div>
+
+              <h3 tabindex="0" role="button" (keydown.enter)="openProject(project)"
+                  class="font-display text-xl sm:text-2xl font-bold text-white tracking-widest cursor-pointer group-hover:text-[#00f0ff] transition-colors mb-3"
+                  (click)="openProject(project)">
+                {{ project.title }}
+              </h3>
+
+              <p class="text-neutral-400 font-light text-xs sm:text-sm leading-relaxed mb-6">
+                {{ project.subtitle }}
+              </p>
+
+              <!-- Tags Badges layout -->
+              <div class="flex flex-wrap gap-1.5">
+                @for (tag of project.tech; track tag) {
+                  <span class="px-2.5 py-0.5 bg-zinc-900 border border-white/5 rounded-md font-mono text-[9px] text-[#888888] tracking-wider uppercase">
+                    {{ tag }}
+                  </span>
+                }
+              </div>
+            </div>
+
+          </div>
+        }
+      </div>
+
+    </section>
+
+    <!-- CORE CAPABILITIES / SERVICES SECTION -->
+    <section id="capabilities" class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-28 border-b border-white/5 scroll-reveal opacity-0">
+      
+      <!-- Section branding header -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-baseline mb-16">
+        <div class="lg:col-span-4">
+          <span class="font-mono text-xs tracking-widest text-[#888888] block mb-2">// COGNITIVE FOCUS PILLARS</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">EXPERTISE</h2>
+        </div>
+        <p class="lg:col-span-8 text-neutral-400 text-sm sm:text-base leading-relaxed font-light max-w-3xl">
+          A rigid focus on creating complete, professional brand patterns and front-end architectures that translate beautifully on screens and code servers alike. Structured according to production discipline.
+        </p>
+      </div>
+
+      <!-- 3-Column Numbered Grid with hover expansion disclosures -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        
+        <!-- Pillar 01 -->
+        <div class="group border-t border-white/10 pt-8 flex flex-col justify-between hover:border-white transition-colors duration-400 min-h-[300px]">
+          <div>
+            <div class="flex items-center justify-between font-mono text-lg mb-6">
+              <span class="text-white/30 font-bold">01/</span>
+              <span class="material-icons text-neutral-500 group-hover:text-white transition-colors duration-300">terminal</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white tracking-tight group-hover:text-[#00f0ff] transition-colors mb-4">
+              Front-End Web Development
+            </h3>
+            <p class="text-neutral-400 font-light text-xs sm:text-sm leading-relaxed mb-6">
+              Writing scalable component templates in Angular, configuring precise PostCSS build definitions, manipulating fluid WebGL or canvas animations, and implementing tight responsive HTML/CSS structures from Git pipelines.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] tracking-widest text-neutral-500 uppercase mt-auto">
+            HTML5, Modern CSS, TS, Git Code
+          </div>
+        </div>
+
+        <!-- Pillar 02 -->
+        <div class="group border-t border-white/10 pt-8 flex flex-col justify-between hover:border-white transition-colors duration-400 min-h-[300px]">
+          <div>
+            <div class="flex items-center justify-between font-mono text-lg mb-6">
+              <span class="text-white/30 font-bold">02/</span>
+              <span class="material-icons text-neutral-500 group-hover:text-white transition-colors duration-300">layers</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white tracking-tight group-hover:text-[#00f0ff] transition-colors mb-4">
+              Interface & Web Design
+            </h3>
+            <p class="text-neutral-400 font-light text-xs sm:text-sm leading-relaxed mb-6">
+              Engineering strict grid systems, drafting high-contrast typography matrix systems, defining clear spacing ratios, and applying beautiful negative space rules to allow users' eyes to glide over digital product features comfortably.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] tracking-widest text-neutral-500 uppercase mt-auto">
+            Layout, Typography Rhythm, Figma
+          </div>
+        </div>
+
+        <!-- Pillar 03 -->
+        <div class="group border-t border-white/10 pt-8 flex flex-col justify-between hover:border-white transition-colors duration-400 min-h-[300px]">
+          <div>
+            <div class="flex items-center justify-between font-mono text-lg mb-6">
+              <span class="text-white/30 font-bold">03/</span>
+              <span class="material-icons text-neutral-500 group-hover:text-white transition-colors duration-300">token</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white tracking-tight group-hover:text-[#00f0ff] transition-colors mb-4">
+              Brand Identity Systems
+            </h3>
+            <p class="text-neutral-400 font-light text-xs sm:text-sm leading-relaxed mb-6">
+              Iterating over high-contrast typography logomarks, producing robust spatial guidelines, authoring unified variable lists for colour palettes, and packaging styling guides into reliable design token arrays.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] tracking-widest text-neutral-500 uppercase mt-auto">
+            Brand books, Tokens, Geometry
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-28 border-b border-white/5 scroll-reveal opacity-0">
+      
+      <!-- Section header -->
+      <span class="font-mono text-xs tracking-widest text-[#888888] block mb-6">// COLLABORATOR VERDICTS</span>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+        
+        <div class="lg:col-span-5">
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none">
+            KIND WORDS FROM CLIENTS.
+          </h2>
+          <p class="text-neutral-500 text-xs sm:text-sm mt-4 max-w-sm leading-relaxed font-light">
+            Genuine assessments from digital studio leads and startup co-founders who have commissioned design or front-end services.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col gap-12">
+          
+          <!-- Testimonial Quote 1 -->
+          <div class="border-l-2 border-white/10 pl-6 md:pl-8 blockquote-interactive relative">
+            <span class="text-3xl text-white/10 font-serif absolute -top-4 -left-2 select-none">“</span>
+            <p class="font-serif italic text-lg sm:text-xl text-neutral-300 leading-relaxed font-light">
+              Rose possesses that rare combination of a designer’s eye and a developer's engineering rigor. She crafted our travel reservation engine from scratch, and the speed, responsiveness, and sleek aesthetics have set a new standard for our digital product.
+            </p>
+            <div class="mt-4 flex flex-col">
+              <span class="font-display text-sm font-semibold text-white">Adrian Santos</span>
+              <span class="font-mono text-[9px] text-[#888888] tracking-widest uppercase mt-0.5">VP of Product @ Viaje PH</span>
+            </div>
+          </div>
+
+          <!-- Testimonial Quote 2 -->
+          <div class="border-l-2 border-white/10 pl-6 md:pl-8 blockquote-interactive relative">
+            <span class="text-3xl text-white/10 font-serif absolute -top-4 -left-2 select-none">“</span>
+            <p class="font-serif italic text-lg sm:text-xl text-neutral-300 leading-relaxed font-light">
+              Her commitment to pristine code and typographical precision is evident in every single commit. She didn't just build our design system; she perfected our entire front-end pipeline. Highly responsive and an absolute joy to solve complex visual challenges with.
+            </p>
+            <div class="mt-4 flex flex-col">
+              <span class="font-display text-sm font-semibold text-white">Eleanor Vance</span>
+              <span class="font-mono text-[9px] text-[#888888] tracking-widest uppercase mt-0.5">CTO @ Nexus Studio</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CREATIVE LAB / PLAYGROUND SECTION -->
+    <section id="sharing" class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-28 border-b border-white/5 scroll-reveal opacity-0">
+      
+      <!-- Section header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <span class="font-mono text-xs tracking-widest text-[#888888] block mb-2">// THE INCUBATOR & EXPERIMENTAL STUFF</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">THINGS WORTH SHARING</h2>
+        </div>
+        <p class="text-neutral-500 font-mono text-xs max-w-sm mt-4 md:mt-0 leading-normal text-left md:text-right">
+          Where I test CSS boundaries, kinetic motion equations, and typographical layouts.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Lab: Live Typography Matrix Playground Widget -->
+        <div class="lg:col-span-7 bg-zinc-950 border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#888888] pb-4 border-b border-white/5 mb-6">
+              <span>01 // DYNAMIC TYPOGRAPHY PLAYGROUND</span>
+              <span class="text-[#00f0ff] uppercase tracking-wider font-semibold">Active Lab</span>
+            </div>
+
+            <!-- Controlled Text Box -->
+            <div class="p-6 bg-zinc-900/50 rounded-xl border border-white/5 overflow-hidden flex items-center justify-center min-h-[220px] transition-all relative">
+              
+              <!-- Subtle blueprint lines overlay -->
+              <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
+
+              <div [style.font-size.px]="typeSize()" 
+                   [style.letter-spacing.em]="typeTracking()" 
+                   [style.font-weight]="typeWeight()" 
+                   [style.line-height]="typeLineHeight()" 
+                   class="font-display text-white text-center transition-all duration-150 relative z-10 w-full break-words">
+                ROSE SINGCO
+              </div>
+            </div>
+
+            <!-- Control Panel Inputs (Angular Signals model binders) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              
+              <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono text-[10px]">
+                  <span class="text-neutral-400 tracking-widest uppercase">FONT SIZE ({{ typeSize() }}PX)</span>
+                </div>
+                <input type="range" min="20" max="96" [value]="typeSize()" (input)="updateTypography('size', $event)" 
+                       class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono text-[10px]">
+                  <span class="text-neutral-400 tracking-widest uppercase">TRACKING ({{ typeTracking() }}EM)</span>
+                </div>
+                <input type="range" min="-0.10" max="0.30" step="0.01" [value]="typeTracking()" (input)="updateTypography('tracking', $event)" 
+                       class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono text-[10px]">
+                  <span class="text-neutral-400 tracking-widest uppercase">FONT WEIGHT ({{ typeWeight() }})</span>
+                </div>
+                <input type="range" min="300" max="800" step="100" [value]="typeWeight()" (input)="updateTypography('weight', $event)" 
+                       class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono text-[10px]">
+                  <span class="text-neutral-400 tracking-widest uppercase">LINE HEIGHT ({{ typeLineHeight() }})</span>
+                </div>
+                <input type="range" min="0.8" max="2.0" step="0.05" [value]="typeLineHeight()" (input)="updateTypography('lineHeight', $event)" 
+                       class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between font-mono text-[10px] text-neutral-500 pt-6 mt-6 border-t border-white/5">
+            <span>DRAG SLIDERS TO TRANSFORM TYPOGRAPHY LAYOUT</span>
+            <button (click)="resetTypography()" class="text-white hover:text-[#00f0ff] uppercase tracking-wider underline cursor-pointer">Reset Params</button>
+          </div>
+        </div>
+
+        <!-- Right Lab: Dynamic Kinetic Dots Grid Sensory Interface -->
+        <div class="lg:col-span-5 bg-zinc-950 border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#888888] pb-4 border-b border-white/5 mb-6">
+              <span>02 // KINETIC MATRIX CANVAS</span>
+              <span class="text-[#00f0ff] uppercase tracking-wider font-semibold">Active Lab</span>
+            </div>
+
+            <!-- Kinetic Cells Canvas Panel -->
+            <div class="p-4 bg-black rounded-xl border border-white/5 relative flex items-center justify-center min-h-[220px]" 
+                 (mouseleave)="clearDotHover()">
+              <div class="grid grid-cols-14 gap-2 w-full max-w-[280px] sm:max-w-xs mx-auto aspect-[14/8]">
+                <!-- Rows Loop -->
+                @for (r of getRows(); track r) {
+                  <!-- Cols Loop -->
+                  @for (c of getCols(); track c) {
+                    <div (mouseenter)="hoverDot(r, c)"
+                         class="aspect-square rounded-full transition-all duration-300 transform"
+                         [className]="getDotClass(r, c)">
+                    </div>
+                  }
+                }
+              </div>
+            </div>
+
+          </div>
+
+          <div class="font-mono text-[10px] text-neutral-500 pt-6 mt-6 border-t border-white/5 text-center leading-normal">
+            HOVER YOUR CURSOR TO INTERACT WITH INDIVIDUAL CELL MAGNETISM & SCALES
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Side Project List Items -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/5">
+        @for (item of sideProjects(); track item.title) {
+          <div class="p-6 bg-zinc-900/30 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2 py-0.5 bg-zinc-800 rounded font-mono text-[8px] tracking-widest text-[#888888] uppercase">
+                {{ item.tag }}
+              </span>
+              <span class="material-icons text-neutral-600 text-sm">science</span>
+            </div>
+            <h4 class="font-display font-semibold text-sm text-white mb-2">{{ item.title }}</h4>
+            <p class="text-neutral-400 font-light text-xs leading-normal">
+              {{ item.desc }}
+            </p>
+          </div>
+        }
+      </div>
+
+    </section>
+
+    <!-- FOOTER WITH CALL TO ACTION -->
+    <footer id="contact" class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-white/5 pb-16">
+        
+        <!-- Brand Call to Action -->
+        <div class="lg:col-span-8">
+          <span class="font-mono text-xs tracking-widest text-[#888888] block mb-3">// WORK COMPILATION INQUIRIES</span>
+          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter leading-none text-white mb-4">
+            HAVE A PROJECT IN MIND?<br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 via-zinc-200 to-white">LET'S TALK.</span>
+          </h2>
+          <p class="text-neutral-400 font-light text-sm sm:text-base md:text-lg max-w-xl leading-relaxed mt-6 mb-8">
+            Whether you want to commission a brand concept system, build a robust responsive web application, or request temporary freelance team support, let's establish contact.
+          </p>
+
+          <!-- Copyable Email Card Interaction -->
+          <div class="inline-flex flex-col sm:flex-row items-stretch sm:items-center bg-zinc-950 border border-white/5 hover:border-white/20 p-2 rounded-xl transition-colors gap-2 max-w-full">
+            <span class="font-mono text-xs md:text-sm text-neutral-400 px-4 py-2 sm:py-0 text-left truncate">
+              rosepiedrasingco123&#64;gmail.com
+            </span>
+            <button (click)="copyEmail()" 
+                    class="px-5 py-2 rounded-lg bg-white text-black font-mono text-xs tracking-widest font-semibold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+              <span class="material-icons text-sm">{{ copied() ? 'check_circle' : 'content_copy' }}</span>
+              {{ copied() ? 'COPIED!' : 'COPY EMAIL' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Coordinates Details Column -->
+        <div class="lg:col-span-4 lg:pl-12 flex flex-col justify-between pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-l border-white/5">
+          <div class="flex flex-col gap-6">
+            <div>
+              <span class="font-mono text-[10px] text-[#555555] tracking-widest uppercase block mb-1">LOCAL PHONE METRIC</span>
+              <span class="font-display text-sm font-semibold text-neutral-200">+63 945 843 3812</span>
+            </div>
+            
+            <div>
+              <span class="font-mono text-[10px] text-[#555555] tracking-widest uppercase block mb-1">COORDINATING FILES</span>
+              <div class="flex flex-col gap-2 mt-2 font-mono text-xs">
+                <a href="https://github.com/rosepiedrasingco123" target="_blank" class="text-[#888888] hover:text-white transition-colors flex items-center gap-1">
+                  github.com/rosepiedrasingco <span class="material-icons text-[10px]">open_in_new</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="text-[#888888] hover:text-white transition-colors flex items-center gap-1">
+                  linkedin.com (Rose Singco) <span class="material-icons text-[10px]">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-8">
+            <span class="font-mono text-[10px] text-[#555555] tracking-widest uppercase block mb-1">REGIONAL DATA ORIGIN</span>
+            <p class="text-xs text-neutral-400 font-light">
+              Maintained under Cebu, Philippines local coordinates. Timezone GMT+8.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer copyright notice -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] text-neutral-500">
+        <div>
+          © 2026 Designed and built by Rose Singco. Crafted in Cebu, Philippines.
+        </div>
+        <div class="flex items-center gap-4">
+          <span>ANGULAR v21.0 SERVER rendering</span>
+          <span>● SECURED ENDPOINTS</span>
+        </div>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <!-- CASE STUDY HIGH-FIDELITY OVERLAY SIDE-DRAWER MODAL -->
+  @if (selectedProject()) {
+    <div tabindex="0" role="button" (keydown.enter)="onBackdropClick($event)"
+         class="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-sm animate-fade-in"
+         (click)="onBackdropClick($event)">
+      
+      <!-- Drawer Component (Clicks on background are handled cleanly by parent) -->
+      <div class="drawer-content w-full max-w-2xl h-full bg-zinc-950 border-l border-white/10 p-8 md:p-12 overflow-y-auto flex flex-col justify-between">
+        
+        <div>
+          
+          <!-- Top Drawer Header Navigation -->
+          <div class="flex items-center justify-between pb-6 border-b border-white/5 mb-8 font-mono text-xs text-[#888888]">
+            <span>No. {{ selectedProject()?.number }} // DETAILED SYSTEM BRIEF</span>
+            <button (click)="closeProject()" class="text-white hover:text-neutral-400 flex items-center gap-1.5 cursor-pointer">
+              CLOSE <span class="material-icons text-sm">close</span>
+            </button>
+          </div>
+
+          <!-- Selected Project Header values -->
+          <span class="font-mono text-xs text-[#00f0ff] uppercase tracking-wider block mb-2">{{ selectedProject()?.role }}</span>
+          <h3 class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+            {{ selectedProject()?.title }}
+          </h3>
+          
+          <!-- Summary bullet -->
+          <p class="text-neutral-300 font-serif italic text-base leading-relaxed mb-8">
+            "{{ selectedProject()?.subtitle }}"
+          </p>
+
+          <!-- Challenge Block structure -->
+          <div class="space-y-8">
+            
+            <div class="p-6 bg-zinc-900/50 rounded-xl border border-white/5">
+              <h4 class="font-mono text-[10px] tracking-widest text-[#888888] uppercase mb-2">// 01. THE PRODUCT CHALLENGE</h4>
+              <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed font-light">
+                {{ selectedProject()?.challenge }}
+              </p>
+            </div>
+
+            <div class="p-6 bg-zinc-900/50 rounded-xl border border-white/5">
+              <h4 class="font-mono text-[10px] tracking-widest text-[#888888] uppercase mb-2">// 02. ENGINE RESOLUTION & SPECIFICATION</h4>
+              <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed font-light">
+                {{ selectedProject()?.solution }}
+              </p>
+            </div>
+
+            <div class="p-6 bg-zinc-900/50 rounded-xl border border-white/5">
+              <h4 class="font-mono text-[10px] tracking-widest text-[#888888] uppercase mb-2">// 03. STACK INCLUDED</h4>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                @for (tag of selectedProject()?.tech; track tag) {
+                  <span class="px-2.5 py-1 bg-zinc-855 border border-white/5 rounded-md font-mono text-[9px] text-white tracking-widest uppercase">
+                    {{ tag }}
+                  </span>
+                }
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Drawer Footer closing steps -->
+        <div class="pt-8 mt-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="font-mono text-[9px] text-[#555555]">PRODUCED SECURELY BY ROSE SINGCO // 2026</span>
+          <button (click)="closeProject()" class="px-5 py-2.5 bg-white text-black font-mono text-xs tracking-widest font-bold rounded-lg hover:bg-neutral-200 cursor-pointer">
+            RETURN TO DIRECTORY
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  }
+
+</div>
