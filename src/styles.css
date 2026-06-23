@@ -1467,14 +1467,14 @@ body {
 .portrait-card .portrait-person {
   position: absolute;
   z-index: 1;
-  right: -2%;
-  bottom: -2px;
-  width: 103%;
-  height: 108%;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   display: block;
   object-fit: contain;
   object-position: center bottom;
-  transform: scale(1.24);
+  transform: scale(1.06);
   transform-origin: center bottom;
   filter:
     saturate(0.92)
@@ -1811,26 +1811,86 @@ body {
 
 @media (max-width: 780px) {
   .site-header {
+    top: max(8px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
+    left: max(8px, env(safe-area-inset-left));
+    width: auto;
+    min-height: 62px;
+    padding: 8px;
+    grid-template-columns: minmax(0, 1fr) 42px;
+    column-gap: 8px;
+    transform: none;
+  }
+
+  .brand {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .brand-mark {
+    flex: 0 0 40px;
+  }
+
+  .brand-copy {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-copy strong,
+  .brand-copy small {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .site-header {
     border-color: var(--night-line);
     background: rgba(10, 14, 18, 0.9);
   }
 
   .menu-toggle {
+    justify-self: end;
+    flex: 0 0 42px;
     border-color: var(--night-line);
+    cursor: pointer;
   }
 
   .menu-toggle span {
     background: var(--night-text);
+    transform-origin: center;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .menu-toggle[aria-expanded='true'] span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded='true'] span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 
   .mobile-nav {
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    max-height: calc(100dvh - 90px - env(safe-area-inset-top));
+    padding: 12px;
     border-color: var(--night-line);
     background: #10151a;
+    overflow-y: auto;
   }
 
   .mobile-nav button {
+    width: 100%;
+    min-height: 50px;
+    padding: 14px 10px;
     border-color: var(--night-line-soft);
     color: var(--night-text);
+    cursor: pointer;
   }
 
   .hero {
@@ -1876,5 +1936,193 @@ body {
 
   .profile-facts {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 370px) {
+  .site-header {
+    right: max(6px, env(safe-area-inset-right));
+    left: max(6px, env(safe-area-inset-left));
+    grid-template-columns: minmax(0, 1fr) 38px;
+    column-gap: 6px;
+  }
+
+  .brand-mark {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-copy small {
+    display: none;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+}
+
+/* Readability pass: keep the editorial hierarchy without micro-sized UI copy. */
+.brand-copy strong {
+  font-size: 15px;
+}
+
+.brand-copy small {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.desktop-nav button {
+  font-size: 14px;
+}
+
+.header-cta,
+.primary-button,
+.text-link {
+  font-size: 13px;
+}
+
+.hero-status,
+.eyebrow,
+.contact-kicker {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.hero-intro {
+  font-size: clamp(17px, 1.25vw, 20px);
+  line-height: 1.7;
+}
+
+.portrait-topline {
+  font-size: 11px;
+}
+
+.portrait-caption span {
+  max-width: 150px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.portrait-sticker {
+  width: 68px;
+  font-size: 11px;
+}
+
+.profile-facts dt {
+  margin-bottom: 9px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.profile-facts dd {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.marquee-track {
+  font-size: 13px;
+}
+
+.section-heading > p,
+.experience-summary,
+.service-card p,
+.about-copy p {
+  font-size: 16px;
+}
+
+.experience-number,
+.experience-title p,
+.experience-meta time {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.tag-list span {
+  padding: 7px 10px;
+  font-size: 11px;
+}
+
+.service-topline {
+  font-size: 12px;
+}
+
+.tool-group > span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.tool-group > div span {
+  padding: 10px 13px;
+  font-size: 12px;
+}
+
+.education-year,
+.education-card p,
+.education-card > div > span {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.certification-row span,
+.certification-row p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.certification-row strong {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.email-button {
+  font-size: 14px;
+}
+
+.phone-link {
+  font-size: 13px;
+}
+
+.contact-section footer {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footer-brand span {
+  font-size: 10px;
+}
+
+@media (max-width: 780px) {
+  .mobile-nav button {
+    font-size: 14px;
+  }
+
+  .profile-facts dd {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  .brand-copy strong {
+    font-size: 14px;
+  }
+
+  .brand-copy small {
+    font-size: 10px;
+  }
+
+  .hero-status,
+  .eyebrow,
+  .contact-kicker {
+    font-size: 11px;
+  }
+
+  .section-heading > p,
+  .experience-summary,
+  .service-card p,
+  .about-copy p {
+    font-size: 15px;
   }
 }
