@@ -12,6 +12,9 @@
       <button [class.active]="activeSection() === 'experience'" (click)="scrollTo('experience')">
         Experience
       </button>
+      <button [class.active]="activeSection() === 'designs'" (click)="scrollTo('designs')">
+        Designs
+      </button>
       <button [class.active]="activeSection() === 'expertise'" (click)="scrollTo('expertise')">
         Expertise
       </button>
@@ -39,6 +42,7 @@
     @if (menuOpen()) {
       <nav class="mobile-nav" aria-label="Mobile navigation">
         <button (click)="scrollTo('experience')">Experience</button>
+        <button (click)="scrollTo('designs')">Designs</button>
         <button (click)="scrollTo('expertise')">Expertise</button>
         <button (click)="scrollTo('about')">About</button>
         <button (click)="scrollTo('contact')">Let’s talk</button>
@@ -176,11 +180,53 @@
       </div>
     </section>
 
+    <section id="designs" class="section-wrap designs-section">
+      <div class="section-heading scroll-reveal">
+        <div>
+          <p class="eyebrow">02 / Sample designs</p>
+          <h2>Visual concepts for apps, websites and dashboards.</h2>
+        </div>
+        <p>
+          A selection of interface samples spanning product landing pages, mobile apps,
+          civic websites, marketplace flows, and operational dashboards.
+        </p>
+      </div>
+
+      <div class="design-gallery">
+        @for (sampleDesign of sampleDesigns; track sampleDesign.slug; let first = $first) {
+          <article class="design-card scroll-reveal" [class.featured-design]="first">
+            <div
+              class="design-image-frame"
+              [class.image-missing]="isDesignImageMissing(sampleDesign.slug)"
+            >
+              @if (!isDesignImageMissing(sampleDesign.slug)) {
+                <img
+                  [src]="sampleDesign.image"
+                  [alt]="sampleDesign.alt"
+                  loading="lazy"
+                  (error)="handleDesignImageError(sampleDesign.slug)"
+                />
+              } @else {
+                <div class="design-placeholder" aria-hidden="true">
+                  <span>{{ sampleDesign.title }}</span>
+                </div>
+              }
+            </div>
+            <div class="design-card-copy">
+              <span>{{ sampleDesign.type }}</span>
+              <h3>{{ sampleDesign.title }}</h3>
+              <p>{{ sampleDesign.platform }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
     <section id="expertise" class="expertise-section">
       <div class="section-wrap">
         <div class="section-heading light scroll-reveal">
           <div>
-            <p class="eyebrow">02 / What I do</p>
+            <p class="eyebrow">03 / What I do</p>
             <h2>One perspective.<br />Two connected disciplines.</h2>
           </div>
           <p>
@@ -207,7 +253,7 @@
     <section id="about" class="section-wrap about-section">
       <div class="about-grid">
         <div class="about-sticky scroll-reveal">
-          <p class="eyebrow">03 / About & approach</p>
+          <p class="eyebrow">04 / About & approach</p>
           <h2>Curious by nature.<br />Practical by design.</h2>
           <div class="about-statement">
             <span class="statement-mark">“</span>

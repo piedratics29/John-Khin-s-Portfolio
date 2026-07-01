@@ -24,6 +24,15 @@ interface Service {
   description: string;
 }
 
+interface SampleDesign {
+  slug: string;
+  title: string;
+  type: string;
+  platform: string;
+  image: string;
+  alt: string;
+}
+
 @Component({
   selector: 'app-portfolio',
   imports: [CommonModule],
@@ -40,6 +49,7 @@ export class PortfolioComponent implements OnDestroy {
   readonly menuOpen = signal(false);
   readonly emailCopied = signal(false);
   readonly photoMissing = signal(false);
+  readonly missingDesignImages = signal<ReadonlySet<string>>(new Set<string>());
 
   readonly experiences: Experience[] = [
     {
@@ -119,6 +129,73 @@ export class PortfolioComponent implements OnDestroy {
     },
   ];
 
+  readonly sampleDesigns: SampleDesign[] = [
+    {
+      slug: 'erpworkbench',
+      title: 'ERPWorkbench dashboard',
+      type: 'Website UI',
+      platform: 'Responsive landing page concept',
+      image: '/sample-designs/erp-workbench.jpg',
+      alt: 'ERPWorkbench dashboard sample design mockup',
+    },
+    {
+      slug: 'cariton',
+      title: 'Cariton ordering app',
+      type: 'Food delivery',
+      platform: 'Restaurant discovery and cart flow',
+      image: '/sample-designs/cariton.jpg',
+      alt: 'Cariton ordering app sample design mockup',
+    },
+    {
+      slug: 'online-course',
+      title: 'Knowledj online course platform',
+      type: 'Education website',
+      platform: 'Course discovery landing page',
+      image: '/sample-designs/knowledj.jpg',
+      alt: 'Online course platform sample design mockup',
+    },
+    {
+      slug: 'sookee-rewards-app',
+      title: 'Sookee rewards app',
+      type: 'Mobile app UI',
+      platform: 'Rewards, vouchers, and redemption flow',
+      image: '/sample-designs/sookee-reward-app.jpg',
+      alt: 'Sookee rewards mobile app sample design mockup',
+    },
+    {
+      slug: 'realtyhub',
+      title: 'Realtyhub property search',
+      type: 'Real estate website',
+      platform: 'Listing search and inquiry experience',
+      image: '/sample-designs/realtyhub.jpg',
+      alt: 'Realtyhub real estate sample design mockup',
+    },
+    {
+      slug: 'dinnox-website',
+      title: 'Dinnox website',
+      type: 'Corporate website',
+      platform: 'Brand awareness and lead generation',
+      image: '/sample-designs/dinnox-website.jpg',
+      alt: 'Dinnox website sample design mockup',
+    },
+    {
+      slug: 'parkee',
+      title: 'Parkee parking app',
+      type: 'Mobility product',
+      platform: 'Parking discovery and reservation flow',
+      image: '/sample-designs/parkee.jpg',
+      alt: 'Parkee parking app sample design mockup',
+    },
+    {
+      slug: 'jagna-municipality',
+      title: 'Municipality of Jagna',
+      type: 'Civic website',
+      platform: 'Public service and tourism landing page',
+      image: '/sample-designs/jagna-municipality.jpg',
+      alt: 'Municipality of Jagna sample design mockup',
+    },
+  ];
+
   readonly designTools = ['Figma', 'Canva', 'Wireframing', 'Prototyping', 'Usability testing'];
   readonly seoTools = [
     'Ahrefs',
@@ -184,6 +261,14 @@ export class PortfolioComponent implements OnDestroy {
     this.photoMissing.set(true);
   }
 
+  handleDesignImageError(slug: string): void {
+    this.missingDesignImages.update((current) => new Set(current).add(slug));
+  }
+
+  isDesignImageMissing(slug: string): boolean {
+    return this.missingDesignImages().has(slug);
+  }
+
   async copyEmail(): Promise<void> {
     try {
       await navigator.clipboard.writeText('johnkinmascardo@gmail.com');
@@ -211,7 +296,7 @@ export class PortfolioComponent implements OnDestroy {
   }
 
   private observeSections(): void {
-    const sectionIds = ['home', 'experience', 'expertise', 'about', 'contact'];
+    const sectionIds = ['home', 'experience', 'designs', 'expertise', 'about', 'contact'];
 
     this.sectionObserver = new IntersectionObserver(
       (entries) => {
